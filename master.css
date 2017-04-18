@@ -8,6 +8,8 @@
 body {
   background: #FF66A4;
   background-image: linear-gradient(15deg, #FF95C0 0%, #FF66A4 100%);
+  background: #FF66A4 url(bg.svg) 50% 50% no-repeat;
+  background-size: cover;
   color: #FFF;
   text-align: left;
   font-family: 'Lato', sans-serif;
@@ -31,7 +33,7 @@ body {
   overflow: hidden;
   background: #17bed7;
   background-image: linear-gradient(15deg, #00BCD4 0%, #26C6DA 100%);
-  box-shadow: 0 .5vmin 4.5vmin #FF4181;
+  box-shadow: 0 .5vmin 7.5vmin rgba(0,0,0,.3);
 }
 
 #message, #result {
@@ -56,7 +58,7 @@ body {
 }
 
 #result p {
-  padding: 1vmin 2vmin 2vmin;
+  padding: 2vmin 3vmin;
   line-height: 10.5vmin;
   font-size: 10vmin;
 }
@@ -104,7 +106,7 @@ a.btn {
   left: 0;
   right: 0;
   display: none;
-  font-size: 2vmin;
+  font-size: 3vmin;
   color: #FFF;
   text-transform: uppercase;
   font-weight: 900;
