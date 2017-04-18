@@ -1,0 +1,31 @@
+{
+  "short_name": "WTFCIGSFFWiFi",
+  "name": "Where the fuck can i get some free fucking WiFi?",
+  "background_color": "#17BED7",
+  "description": "Where the fuck can i get some free fucking WiFi?",
+  "icons": [
+    {
+      "src": "/wtf/icons/icon_96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/wtf/icons/icon_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/wtf/icons/icon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/wtf/icons/icon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/wtf/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}
