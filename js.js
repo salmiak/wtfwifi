@@ -20,13 +20,13 @@ function showWiFi(response) {
 
   if(hotspot.venue_name) {
     resultEl.innerHTML =
-      '<p class="greatWiFi">Now there\'s a great fucking WiFi:</p><p>Go to<br/><b>' +
+      '<p class="greatWiFi">Now there\'s some great fucking WiFi:</p><p>Go to<br/><b>' +
       hotspot.venue_name +
       '</b><br/>at<br/><b>' +
       hotspot.venue_address +
       '</b>.</p><p style="text-align: center"><a id="directionsBtn" class="btn" href="https://www.google.com/maps/dir/Current+location/' + hotspot.lat + ',' + hotspot.lon + '">Show me the fucking way!</a></p>';
   } else {
-    resultEl.innerHTML = '<p class="greatWiFi">Now there\'s a great fucking WiFi:</p><p style="margin-top: 10vmin;">Go to<br/><b>' +
+    resultEl.innerHTML = '<p class="greatWiFi">Now there\'s some great fucking WiFi:</p><p style="margin-top: 10vmin;">Go to<br/><b>' +
       hotspot.ssid +
       '</b></p><p style="text-align: center"><a id="directionsBtn" class="btn" href="https://www.google.com/maps/dir/Current+location/' + hotspot.lat + ',' + hotspot.lon + '">Show me the fucking way!</a></p>';
   }
