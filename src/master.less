@@ -1,14 +1,19 @@
+// Variables
+
+@B500: #17bed7;
+@A500: #FF66A4;
+
 ::selection {
-  background: #FF66A4; /* WebKit/Blink Browsers */
+  background: @A500; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #FF66A4; /* Gecko Browsers */
+  background: @A500; /* Gecko Browsers */
 }
 
 body {
-  background: #FF66A4;
-  background-image: linear-gradient(15deg, #FF95C0 0%, #FF66A4 100%);
-  background: #FF66A4 url(bg.svg) 50% 50% no-repeat;
+  background: @A500;
+  background-image: linear-gradient(15deg, #FF95C0 0%, @A500 100%);
+  background: @A500 url(bg.svg) 50% 50% no-repeat;
   background-size: cover;
   color: #FFF;
   text-align: left;
@@ -31,7 +36,7 @@ body {
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  background: #17bed7;
+  background: @B500;
   background-image: linear-gradient(15deg, #00BCD4 0%, #26C6DA 100%);
   box-shadow: 0 .5vmin 7.5vmin rgba(0,0,0,.3);
 }
@@ -57,17 +62,17 @@ body {
   font-size: 15vmin;
 }
 
-#result p {
+.result p {
   padding: 2vmin 3vmin;
   line-height: 10.5vmin;
   font-size: 10vmin;
 }
 
-#result p.greatWiFi {
+.result p.greatWiFi {
   background: rgba(255,255,255,0.6);
   font-size: 3vmin;
   line-height: 3.5vmin;
-  color: #17bed7;
+  color: @B500;
   margin: 0;
   box-sizing: border-box;
   text-transform: uppercase;
@@ -81,14 +86,14 @@ body {
 b {
   font-weight: 900;
   background: #FFF;
-  color: #17bed7;
+  color: @B500;
   padding: 0 0.2em;
 }
 
 a.btn {
   font-size: 4.5vmin;
   display: inline-block;
-  background: #FF66A4;
+  background: @A500;
   color: #FFF;
   text-transform: uppercase;
   font-weight: 900;
@@ -105,7 +110,7 @@ a.btn {
   bottom: 7vmin;
   left: 0;
   right: 0;
-  display: none;
+  display: block;
   font-size: 3vmin;
   color: #FFF;
   text-transform: uppercase;
@@ -116,9 +121,6 @@ a.btn {
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-}
-#loadNext.active {
-  display: block;
 }
 
 .powered_by {
@@ -149,7 +151,7 @@ a.btn {
   font-size: 2vmin;
   line-height: 4vmin;
   letter-spacing: 0.15em;
-  background: #17bed7;
+  background: @B500;
   border-radius: 1vmin;
   padding: 0 2vmin;
 }

@@ -35,21 +35,41 @@
     <link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico?v=QE5a8PdLGl">
   </head>
   <body>
+
     <div id="content">
-      <div id="message">
+
+      <div id="message" v-if="message">
         <p>
-          Loading...
+          {{message}}
         </p>
       </div>
-      <div id="result" class="hidden">
+
+      <div class="result" v-if="result">
+        <p class="greatWiFi">Now there's some great fucking WiFi:</p>
+
+        <p v-if="result.venue_name">
+          Go to<br/>
+          <b>{{result.venue_name}}</b><br/>
+          at<br/>
+          <b>{{result.venue_address}}</b>.
+        </p>
+        <p style="margin-top: 10vmin;" v-else>Go to<br/><b>{{result.ssid}}</b></p>
+
+        <p style="text-align: center">
+          <a id="directionsBtn" class="btn" v-bind:href="result.directionsUrl" v-on:click="gaDirections">Show me the fucking way!</a>
+        </p>
       </div>
-      <div id="loadNext">Fuck no! I don't want that one</div>
-      <a href="https://instabridge.com" class="powered_by" id="getApp">
+
+      <div id="loadNext" v-if="result" v-on:click="getNextWiFi">Fuck no! I don't want that one</div>
+
+      <a href="https://instabridge.com" class="powered_by" v-on:click="gaGetApp">
         Powered by <img src="instabridge.svg" />
         <div>Get the app</div>
       </a>
     </div>
 
+
+    <script src="https://unpkg.com/vue"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -60,7 +80,7 @@
       ga('send', 'pageview');
 
     </script>
-    <script src="js.js" charset="utf-8"></script>
+    <script src="wtfwifi.js" charset="utf-8"></script>
 
   </body>
 </html>
