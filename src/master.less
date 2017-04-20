@@ -28,35 +28,69 @@ body {
   align-items: center;
 }
 
-#content {
+#main {
+  width: 96vmin;
   height: 96vmin;
-  width: 100%;
-  border-radius: 2vmin;
-  margin: 2vmin auto;
-  box-sizing: border-box;
   position: relative;
+  perspective: 150vmin;
+}
+
+#content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(-96/2vmin) rotate3d(0,0,0,0deg);
+  transition: transform 0.8s;
+}
+.pos     #content { transform: translateZ(-96/2vmin) rotate3d(1,0,0,180deg); }
+.getWiFi #content { transform: translateZ(-96/2vmin) rotate3d(0,1,0,-90deg); }
+.result  #content { transform: translateZ(-96/2vmin) rotate3d(0,1,0,90deg); }
+.error   #content { transform: translateZ(-96/2vmin) rotate3d(0,1,0,90deg); }
+
+.side {
+  box-sizing: border-box;
   overflow: hidden;
   background: @B500;
   background-image: linear-gradient(15deg, #00BCD4 0%, #26C6DA 100%);
-  box-shadow: 0 .5vmin 7.5vmin rgba(0,0,0,.3);
-}
-
-#message, #result {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   box-sizing: border-box;
-  transition: transform 0.3s, opacity 0.3s;
+  margin: 0;
+  width: 96vmin;
+  height: 96vmin;
+  display: block;
+  position: absolute;
+  border: 0.5vmin solid lighten(@B500, 10%);
+  &:nth-child(1) { transform: rotateY(0     ) translateZ(96/2vmin); }
+  &:nth-child(2) { transform: rotateX(180deg) translateZ(96/2vmin); }
+  &:nth-child(3) { transform: rotateY(90deg ) translateZ(96/2vmin); }
+  &:nth-child(4) { transform: rotateY(-90deg) translateZ(96/2vmin); }
+  &:nth-child(5) { transform: rotateX(90deg ) translateZ(96/2vmin); }
+  &:nth-child(6) { transform: rotateX(-90deg) translateZ(96/2vmin); }
 }
 
-.hidden {
-  opacity: 0;
-  transform: translate3d(0,-2vmin,0);
+#loading {
+  line-height: 96vmin;
+  text-align: center;
+  font-size: 7vmin;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
-
-#message {
+#pos {
+  padding: 20vmin 5vmin;
+  line-height: 15vmin;
+  font-size: 15vmin;
+}
+#getWiFi {
+  padding: 20vmin 5vmin;
+  line-height: 15vmin;
+  font-size: 15vmin;
+}
+#error {
   padding: 20vmin 5vmin;
   line-height: 15vmin;
   font-size: 15vmin;
@@ -66,20 +100,19 @@ body {
   padding: 2vmin 3vmin;
   line-height: 10.5vmin;
   font-size: 10vmin;
-}
 
-.result p.greatWiFi {
-  background: rgba(255,255,255,0.6);
-  font-size: 3vmin;
-  line-height: 3.5vmin;
-  color: @B500;
-  margin: 0;
-  box-sizing: border-box;
-  text-transform: uppercase;
-  font-weight: 900;
-  padding: 1vmin 2vmin;
-  letter-spacing: 0.10em;
-  border-radius: 2vmin 2vmin 0 0;
+  &.greatWiFi {
+    background: rgba(255,255,255,0.6);
+    font-size: 3vmin;
+    line-height: 3.5vmin;
+    color: @B500;
+    margin: 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 1vmin 2vmin;
+    letter-spacing: 0.10em;
+  }
 }
 
 
@@ -106,10 +139,7 @@ a.btn {
 }
 
 #loadNext {
-  position: absolute;
-  bottom: 7vmin;
-  left: 0;
-  right: 0;
+  position: relative;
   display: block;
   font-size: 3vmin;
   color: #FFF;
@@ -125,15 +155,15 @@ a.btn {
 
 .powered_by {
   position: absolute;
-  bottom: 0vmin;
-  left: 0vmin;
-  right: 0vmin;
+  bottom: 3vmin;
+  left: 3vmin;
+  right: 3vmin;
   line-height: 6vmin;
   padding: 0.3vmin 2vmin 0;
   color: #FFF;
   text-decoration: none;
   background: rgba(255,255,255,0.4);
-  border-radius: 0 0 2vmin 2vmin;
+  border-radius: 2vmin;
   text-transform: uppercase;
   font-size: 1vmin;
   font-weight: 900;

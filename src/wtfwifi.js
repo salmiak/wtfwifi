@@ -7,9 +7,10 @@ var userPos = false;
 var blackList = []
 
 var app = new Vue({
-  el: '#content',
+  el: '#main',
   data: {
-    message: 'Loading...',
+    state: 'loading',
+    message: '',
     result: false
   },
   methods: {
@@ -36,8 +37,9 @@ var app = new Vue({
 
 function getHotspotsAtLocation(position, _offset) {
 
-  app.result = false;
-  app.message = "Finding the best fucking WiFi...";
+  // app.result = false;
+  app.state = "getWiFi";
+  // app.message = "Finding the best fucking WiFi...";
 
   var url = APIbase + 'hotspots?radius=' + radius + '&offset=' + _offset + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&limit=1' + APItoken;
 
@@ -61,7 +63,8 @@ function getHotspotsAtLocation(position, _offset) {
 
         app.result = responseObj.hotspots[0];
         app.result.directionsUrl = 'https://www.google.com/maps/dir/Current+location/'+app.result.lat+','+app.result.lon;
-        app.message = false;
+        //app.message = false;
+        app.state = "result";
         blackList.push(app.result.id);
         offset++;
 
@@ -72,8 +75,10 @@ function getHotspotsAtLocation(position, _offset) {
       }
     } else if (this.readyState == 4 && this.status != 200) {
       app.message = "Something fucked up - try again later :(";
+      app.state = "error"
     } else {
-      app.message = "Finding the best fucking WiFi...";
+      app.state = "getWiFi"
+      // app.message = "Finding the best fucking WiFi...";
     }
   }
 
@@ -82,9 +87,10 @@ function getHotspotsAtLocation(position, _offset) {
 }
 
 function getWiFi(offset) {
-  app.result = false;
+  // app.result = false;
   if (navigator.geolocation) {
-    app.message = "Fetching your fucking location..."
+    // app.message = "Fetching your fucking location..."
+    app.state = "pos"
     navigator.geolocation.getCurrentPosition(function(position) {
       ga('send', 'event', 'Location', 'Got location', {
         nonInteraction: true
@@ -93,6 +99,7 @@ function getWiFi(offset) {
       getHotspotsAtLocation(userPos, offset);
     });
   } else {
+    app.state = "error";
     app.message = "Geolocation is not supported by this fucking browser.";
   }
 }
