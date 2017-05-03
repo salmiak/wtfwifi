@@ -8,8 +8,14 @@
     <meta name="theme-color" content="#FF66A4">
 		<meta name="apple-itunes-app" content="app-id=971679641">
     <link rel="manifest" href="manifest.json">
-    <link href="https://instabridge.com/wp-content/themes/ib17/img/icons/favicon.ico" rel="shortcut icon">
-    <link href="https://instabridge.com/wp-content/themes/ib17/img/icons/touch.png" rel="apple-touch-icon-precomposed">
+
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://instabridge.com/wtf/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://instabridge.com/wtf/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://instabridge.com/wtf/favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="https://instabridge.com/wtf/favicons/safari-pinned-tab.svg" color="#17bed7">
+    <link rel="shortcut icon" href="https://instabridge.com/wtf/favicons/favicon.ico">
+    <meta name="msapplication-config" content="https://instabridge.com/wtf/favicons/browserconfig.xml">
+
     <meta name="description" content="With Instabridge get more than a million up-to-date WiFi spots &amp; passwords in your phone => Install the App > Auto-connect to WiFi > Surf Internet for Free">
 
     <link rel="canonical" href="https://instabridge.com/en/">
@@ -28,15 +34,15 @@
     <meta name="twitter:site" content="@instabridge">
     <meta name="twitter:image" content="https://instabridge.com/wp-content/uploads/2014/10/Instabridge-New-Website-Twitter.png">
     <meta name="twitter:creator" content="@instabridge">
-    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/uploads/fbrfg/apple-touch-icon.png?v=QE5a8PdLGl">
-    <link rel="icon" type="image/png" href="/wp-content/uploads/fbrfg/favicon-32x32.png?v=QE5a8PdLGl" sizes="32x32">
-    <link rel="icon" type="image/png" href="/wp-content/uploads/fbrfg/favicon-16x16.png?v=QE5a8PdLGl" sizes="16x16">
-    <link rel="mask-icon" href="/wp-content/uploads/fbrfg/safari-pinned-tab.svg?v=QE5a8PdLGl" color="#17bed7">
-    <link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico?v=QE5a8PdLGl">
+
   </head>
   <body>
 
-    <div id="content">
+    <div id="content" class="loading">
+
+      <div id="loading" v-if="!message && !result">
+        Loading...
+      </div>
 
       <div id="message" v-if="message">
         <p>

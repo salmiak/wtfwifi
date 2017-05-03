@@ -9,7 +9,7 @@ var blackList = []
 var app = new Vue({
   el: '#content',
   data: {
-    message: 'Loading...',
+    message: '<br/>Loading...',
     result: false
   },
   methods: {
@@ -57,6 +57,12 @@ function getHotspotsAtLocation(position, _offset) {
         offset++;
         getHotspotsAtLocation(position, offset)
 
+      } else if ( responseObj.hotspots[0].p_exists * responseObj.hotspots[0].p_internet < 0.75 ) {
+
+        blackList.push(responseObj.hotspots[0].id)
+        offset++;
+        getHotspotsAtLocation(position, offset)
+
       } else {
 
         app.result = responseObj.hotspots[0];
@@ -98,3 +104,4 @@ function getWiFi(offset) {
 }
 
 getWiFi(offset);
+document.getElementById('content').classList.remove('loading');
