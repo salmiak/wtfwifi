@@ -2,6 +2,8 @@
 
 @B500: #17bed7;
 @A500: #FF66A4;
+@L100: fadeout(#000, 46%);
+@L200: fadeout(#000, 13%);
 
 ::selection {
   background: @A500; /* WebKit/Blink Browsers */
@@ -11,34 +13,30 @@
 }
 
 body {
-  background: @A500;
-  background-image: linear-gradient(15deg, #FF95C0 0%, @A500 100%);
-  background: @A500 url(bg.svg) 50% 50% no-repeat;
-  background-size: cover;
-  color: #FFF;
+  background: @B500;
+  color: @L100;
   text-align: left;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  padding: 0;
+  padding: 0 0 7vmin;
   max-width: 96vmin;
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 }
 
 #content {
-  height: 96vmin;
   width: 100%;
-  border-radius: 2vmin;
+  border-radius: calc(2vmin+1px);
+  border: 1px solid #FFF;
   margin: 2vmin auto;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  background: @B500;
-  background-image: linear-gradient(15deg, #00BCD4 0%, #26C6DA 100%);
-  box-shadow: 0 .5vmin 7.5vmin rgba(0,0,0,.3);
+  background: #F5F5F5;
 }
 
 .loading {
@@ -48,11 +46,7 @@ body {
 }
 
 #message, .result, #loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  position: relative;
   box-sizing: border-box;
   transition: transform 0.3s, opacity 0.3s;
 }
@@ -62,42 +56,71 @@ body {
   transform: translate3d(0,-2vmin,0);
 }
 
-#loading {
-  padding: 35vmin 5vmin;
-  line-height: 15vmin;
-  font-size: 15vmin;
-}
-#message {
-  padding: 20vmin 5vmin;
-  line-height: 15vmin;
-  font-size: 15vmin;
+@bigTextSize: 7.5vmin;
+#loading , #message {
+  padding: 3vmin 5vmin;
+  line-height: @bigTextSize;
+  font-size: @bigTextSize;
 }
 
 .result p {
   padding: 2vmin 3vmin;
-  line-height: 10.5vmin;
-  font-size: 10vmin;
+  line-height: 8.5vmin;
+  font-size: 8vmin;
 }
 
 .result p.greatWiFi {
-  background: rgba(255,255,255,0.6);
+  background: fadeout(@B500, 90%);
   font-size: 3vmin;
   line-height: 3.5vmin;
-  color: @B500;
+  color: @L100;
   margin: 0;
   box-sizing: border-box;
   text-transform: uppercase;
   font-weight: 900;
-  padding: 1vmin 2vmin;
+  padding: 1vmin 3vmin;
   letter-spacing: 0.10em;
   border-radius: 2vmin 2vmin 0 0;
+}
+
+.result .staticMap {
+  display: block;
+  position: relative;
+  margin: 0 0 2vmin;
+  cursor: pointer;
+  &Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 96/480*320vmin;
+    opacity: 0;
+    background: rgba(0,0,0,.66);
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .10em;
+    font-weight: 600;
+    transition: opacity .5s;
+    text-shadow: 0 0 10px #000;
+    font-size: 3vmin;
+    &:hover {
+      opacity: 1;
+    }
+  }
+   > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 
 b {
   font-weight: 900;
-  background: #FFF;
-  color: @B500;
+  color: @L200;
+  background: @B500;
   padding: 0 0.2em;
 }
 
@@ -117,50 +140,47 @@ a.btn {
 }
 
 #loadNext {
-  position: absolute;
-  bottom: 7vmin;
-  left: 0;
-  right: 0;
+  position: relative;
   display: block;
-  font-size: 3vmin;
-  color: #FFF;
+  font-size: 2.5vmin;
+  color: @B500;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.15em;
   line-height: 1em;
-  padding: 2vmin 0;
-  text-decoration: none;
+  padding: 2vmin 0 4vmin;
+  text-decoration: underline;
   text-align: center;
   cursor: pointer;
 }
 
 .powered_by {
-  position: absolute;
+  position: fixed;
   bottom: 0vmin;
   left: 0vmin;
   right: 0vmin;
-  line-height: 6vmin;
-  padding: 0.3vmin 2vmin 0;
+  line-height: 8vmin;
+  padding: 0.4vmin 3vmin 0;
   color: #FFF;
   text-decoration: none;
-  background: rgba(255,255,255,0.4);
-  border-radius: 0 0 2vmin 2vmin;
+  background: lighten(@B500, 30%);
   text-transform: uppercase;
-  font-size: 1vmin;
+  font-size: 1.5vmin;
   font-weight: 900;
   letter-spacing: 0.1em;
+  border-top: 1px solid #FFF;
 }
 .powered_by > img {
-  height: 4.5vmin;
-  vertical-align: -1.5vmin;
+  height: 6vmin;
+  vertical-align: -1.6vmin;
 }
 
 .powered_by > div {
   position: absolute;
-  right: 1.2vmin;
-  top: 1.2vmin;
-  font-size: 2vmin;
-  line-height: 4vmin;
+  right: 1.6vmin;
+  top: 1.6vmin;
+  font-size: 3vmin;
+  line-height: 5vmin;
   letter-spacing: 0.15em;
   background: @B500;
   border-radius: 1vmin;

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Where the fuck can i get some free fucking WiFi?</title>
+    <title>Where can i get some free WiFi?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
     <link rel="stylesheet" href="master.css">
@@ -50,29 +50,35 @@
         </p>
       </div>
 
-      <div class="result" v-if="result">
-        <p class="greatWiFi">Now there's some great fucking WiFi:</p>
+      <div class="result" v-if="result && !message">
+        <p class="greatWiFi">This WiFi is very likely to work:</p>
+
+        <a target="_blank" v-bind:href="result.directionsUrl" v-on:click="gaDirections" class="staticMap">
+          <img v-bind:src="result.staticMapSrc" />
+          <div class="staticMapOverlay">Click for directions</div>
+        </a>
 
         <p v-if="result.venue_name">
-          Go to<br/>
           <b>{{result.venue_name}}</b><br/>
           at<br/>
           <b>{{result.venue_address}}</b>.
         </p>
-        <p style="margin-top: 10vmin;" v-else>Go to<br/><b>{{result.ssid}}</b></p>
+        <p v-else><b>{{result.ssid}}</b></p>
 
         <p style="text-align: center">
-          <a id="directionsBtn" class="btn" v-bind:href="result.directionsUrl" v-on:click="gaDirections">Show me the fucking way!</a>
+          <a id="directionsBtn" class="btn" v-bind:href="result.directionsUrl" v-on:click="gaDirections">Show me the way!</a>
         </p>
       </div>
 
-      <div id="loadNext" v-if="result" v-on:click="getNextWiFi">Fuck no! I don't want that one</div>
-
-      <a href="https://instabridge.com" class="powered_by" v-on:click="gaGetApp">
-        Powered by <img src="instabridge.svg" />
-        <div>Get the app</div>
-      </a>
+      <div id="loadNext" v-if="result" v-on:click="getNextWiFi">Show a different WiFi</div>
     </div>
+
+
+
+    <a href="https://instabridge.com" class="powered_by" v-on:click="gaGetApp">
+      Powered by <img src="instabridge.svg" />
+      <div>Get the app</div>
+    </a>
 
 
     <script src="https://unpkg.com/vue"></script>
